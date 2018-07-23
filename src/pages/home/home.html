@@ -6,9 +6,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content no-padding>
+  <section id="cd-timeline" >
+    <div *ngFor="let log of logs; let last = last; let first = first" class="cd-container">
+      <div [class]="last?'cd-timeline-last-block':'cd-timeline-block'">
+        <div class="cd-timeline-icon positive">
+          <ion-icon [name]="last?'create':'calendar'"  [color]="first? 'secondary':'primary'"></ion-icon>
+        </div>
+        <div class="cd-timeline-content positive">
+          <h5 class="marginBottom0 marginTop0" ion-text [color]="first? 'secondary':'dark'">{{log.time|date:'dd/MM HH:mm'}}</h5>
+          <p class="timelineText" ion-text [color]="first? 'secondary':'dark'">{{log.title}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </ion-content>
